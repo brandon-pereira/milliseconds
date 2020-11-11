@@ -1,7 +1,7 @@
 {
-  "name": "byte-calculator",
+  "name": "milliseconds-calculator",
   "version": "1.0.0",
-  "description": "Calculate the size of a string in style",
+  "description": "Utility to calculate and visualize milliseconds. All from the browser!",
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html",
@@ -9,18 +9,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/brandon-pereira/byte-calculator.git"
+    "url": "git+https://github.com/brandon-pereira/milliseconds.git"
   },
   "author": "brandon-pereira",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/brandon-pereira/byte-calculator/issues"
+    "url": "https://github.com/brandon-pereira/milliseconds/issues"
   },
-  "homepage": "https://github.com/brandon-pereira/byte-calculator#readme",
+  "homepage": "https://github.com/brandon-pereira/milliseconds#readme",
   "devDependencies": {
     "parcel": "^1.12.4"
   },
   "dependencies": {
-    "bytes": "^3.1.0"
+    "@sindresorhus/to-milliseconds": "^1.2.0",
+    "bytes": "^3.1.0",
+    "parse-ms": "^2.1.0"
   }
 }

@@ -1,33 +1,37 @@
-const $input = document.querySelector("[data-input]");
-const $rawBytes = document.querySelector("[data-raw-bytes]");
-const $formattedSize = document.querySelector("[data-formatted-bytes]");
-const $formattedUnit = document.querySelector("[data-formatted-unit]");
+import { toMs, fromMs } from "./milliseconds";
 
-// over-engineered but I wanted to try web workers :D
-const stringToSize = new Worker("worker.js");
+const formats = [
+  "microseconds",
+  "milliseconds",
+  "seconds",
+  "minutes",
+  "hours",
+  "days",
+];
+const $inputs = formats.reduce((acc, curr) => {
+  const $input = document.querySelector(`input[data-format="${curr}"]`);
+  acc[curr] = $input;
+  return acc;
+}, {});
 
-render();
-$input.addEventListener("keyup", (e) => {
-  render();
+render(0);
+Object.values($inputs).forEach((el) => {
+  el.addEventListener("keyup", (e) => {
+    const format = e.target.dataset.format;
+    const value = parseInt(e.target.value);
+    const ms = toMs({ [format]: value });
+    render(ms);
+  });
+  el.addEventListener("focus", (e) => {
+    e.target.select();
+  });
 });
 
-$input.addEventListener("focus", (e) => {
-  e.target.select();
-});
-
-function render() {
-  stringToSize.postMessage($input.value);
-  stringToSize.onmessage = (e) => {
-    updateUI(e.data);
-  };
-}
-
-function formatNumber(num) {
-  return new Intl.NumberFormat().format(num);
-}
-
-function updateUI(size) {
-  $rawBytes.innerText = formatNumber(size.bytes);
-  $formattedSize.innerText = size.formattedSize;
-  $formattedUnit.innerText = size.formattedUnit;
+function render(ms = 0) {
+  const formatted = fromMs(ms);
+  Object.entries($inputs).forEach(([format, $input]) => {
+    if (document.activeElement !== $input) {
+      $input.value = formatted[format] || 0;
+    }
+  });
 }
