@@ -25,6 +25,10 @@ Object.values($inputs).forEach((el) => {
   el.addEventListener("focus", (e) => {
     e.target.select();
   });
+  el.parentNode.querySelector(".clipboard").addEventListener("click", () => {
+    el.select();
+    document.execCommand("copy");
+  });
 });
 
 function render(ms = 0) {
