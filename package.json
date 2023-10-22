@@ -4,7 +4,7 @@
   "description": "Utility to calculate and visualize milliseconds. All from the browser!",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --public-url ./"
   },
   "repository": {
     "type": "git",
