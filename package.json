@@ -18,9 +18,5 @@
   "homepage": "https://github.com/brandon-pereira/milliseconds#readme",
   "devDependencies": {
     "parcel": "^2.10.0"
-  },
-  "dependencies": {
-    "@sindresorhus/to-milliseconds": "^2.0.0",
-    "parse-ms": "^3.0.0"
   }
 }
