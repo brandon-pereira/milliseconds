@@ -2,7 +2,6 @@
   "name": "milliseconds-calculator",
   "version": "1.0.0",
   "description": "Utility to calculate and visualize milliseconds. All from the browser!",
-  "main": "index.html",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html -d ./dist"
@@ -18,11 +17,10 @@
   },
   "homepage": "https://github.com/brandon-pereira/milliseconds#readme",
   "devDependencies": {
-    "parcel": "^1.12.4"
+    "parcel": "^2.10.0"
   },
   "dependencies": {
-    "@sindresorhus/to-milliseconds": "^1.2.0",
-    "bytes": "^3.1.0",
-    "parse-ms": "^2.1.0"
+    "@sindresorhus/to-milliseconds": "^2.0.0",
+    "parse-ms": "^3.0.0"
   }
 }
